@@ -1,0 +1,27 @@
+# nfpm example config file
+name: "collectd_exporter"
+arch: "amd64"
+platform: "linux"
+version: "v0.4.0"
+section: "default"
+priority: "extra"
+maintainer: "Francis Begyn <francis@begyn.be>"
+description: |
+  A server that accepts collectd stats via HTTP POST and exports them via HTTP for Prometheus consumption
+vendor: "Francis"
+homepage: "https://github.com/prometheus/collectd_exporter"
+license: "MIT"
+bindir: "/usr/sbin"
+files:
+  ./collectd_exporter.service: "/etc/systemd/system/collectd_exporter.service"
+  ./bin/collectd_exporter: "/usr/sbin/collectd_exporter"
+overrides:
+  rpm:
+    scripts:
+      preinstall: ./scripts/preinstall.sh
+      postremove: ./scripts/postremove.sh
+  deb:
+    scripts:
+      postinstall: ./scripts/postinstall.sh
+      preremove: ./scripts/preremove.sh
+      postremove: ./scripts/postremove.sh
