@@ -1,5 +1,5 @@
 # nfpm example config file
-name: "collectd_exporter"
+name: "collectd-exporter"
 arch: "amd64"
 platform: "linux"
 version: "v0.4.0"
